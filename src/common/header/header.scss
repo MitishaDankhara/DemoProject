@@ -11,6 +11,7 @@ header {
 
         .header_menu {
             @include flex_center();
+            gap: 42px;
 
             a {
                 p {
@@ -45,8 +46,6 @@ header {
                         }
                     }
                 }
-
-                padding-left: 42px;
                 @include flex_center();
 
                 &:nth-child(3),
@@ -70,6 +69,9 @@ header {
         .header_icons {
             @include flex_center();
             gap: 40px;
+            .search{
+                cursor: pointer;
+            }
         }
 
 

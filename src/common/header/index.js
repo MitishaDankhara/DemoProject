@@ -46,7 +46,9 @@ export default function Header() {
                 <p onClick={handleOpendd}>
                   Product
                   <div
-                    className={`product_drop_down ${isOpenddProduct ? "open" : ""}`}
+                    className={`product_drop_down ${
+                      isOpenddProduct ? "open" : ""
+                    }`}
                     ref={DropDownRef}
                   >
                     <p>Product List</p>
@@ -55,9 +57,12 @@ export default function Header() {
                 </p>
               </Link>
               <Link to={""}>
-                <p onClick={handleOpenddPage}>Pages
-                <div
-                    className={`product_drop_down ${isOpenddPages ? "open" : ""}`}
+                <p onClick={handleOpenddPage}>
+                  Pages
+                  <div
+                    className={`product_drop_down ${
+                      isOpenddPages ? "open" : ""
+                    }`}
                     ref={DropDownRef}
                   >
                     <p>Login</p>
@@ -65,12 +70,16 @@ export default function Header() {
                     <p>Shopping Cart</p>
                     <p>Confirmation</p>
                     <p>Elements</p>
-                  </div></p>
+                  </div>
+                </p>
               </Link>
               <Link to={""}>
-                <p onClick={handleOpenddBlog}>Blog
-                <div
-                    className={`product_drop_down ${isOpenddBlog ? "open" : ""}`}
+                <p onClick={handleOpenddBlog}>
+                  Blog
+                  <div
+                    className={`product_drop_down ${
+                      isOpenddBlog ? "open" : ""
+                    }`}
                     ref={DropDownRef}
                   >
                     <p>Blog</p>
