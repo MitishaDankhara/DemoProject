@@ -1,0 +1,18 @@
+@mixin input {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+@mixin menu {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    color: var(--header_font_color);
+}
+
+@mixin menu_dropdown {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--white);
+}
