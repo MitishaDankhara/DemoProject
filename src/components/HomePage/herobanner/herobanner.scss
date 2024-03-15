@@ -1,0 +1,84 @@
+@import '../../../styles/global.scss';
+
+.herobanner_flex_main {
+    @include flex_center_between();
+    padding-bottom: 100px;
+
+    @include breakpoint('max-lg') {
+        padding: 0px 40px;
+        padding-bottom: 80px;
+    }
+
+    @include breakpoint('max-md') {
+        padding-bottom: 60px;
+    }
+
+    @include breakpoint('max-sm') {
+        padding-bottom: 40px;
+    }
+
+    @include breakpoint('max-xs') {
+        padding-bottom: 28px;
+    }
+
+    @include breakpoint("max-lg") {
+        padding: 0px 40px;
+    }
+
+    .primary_color_pillar {
+        background-color: var(--primary_color);
+        width: 196px;
+        height: 618px;
+        margin-top: 177px;
+
+        @include breakpoint("max-xl") {
+            display: none;
+        }
+    }
+
+    .herobanner_heading {
+        max-width: 405px;
+        margin: 0 auto;
+
+        @include breakpoint("max-sm") {
+            margin-top: 40px;
+            order: 2;
+            max-width: fit-content;
+        }
+
+        h1 {
+            @include heading();
+            margin-bottom: 10px;
+        }
+
+        p {
+            @include subHeading();
+        }
+    }
+
+    .herobanner_image {
+        position: relative;
+
+        @include breakpoint("max-sm") {
+            order: 1;
+        }
+
+        img {
+            object-fit: cover;
+        }
+
+        .absolute_image {
+            position: absolute;
+            bottom: 0;
+            left: -137px;
+
+            @include breakpoint("max-md") {
+                display: none;
+            }
+
+            @include breakpoint("max-sm") {
+                display: block;
+            }
+        }
+    }
+}

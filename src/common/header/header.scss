@@ -2,27 +2,58 @@
 
 header {
     width: 100%;
+    background-color: var(--white);
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1;
 
     .header_alignment {
         padding: 20px 0px;
         @include flex_center_between();
         position: relative;
 
+        .header_logo {
+            @include breakpoint ("max-md") {
+                order: 2;
+            }
+
+            img {
+                object-fit: cover;
+            }
+        }
 
         .header_menu {
             @include flex_center();
+            gap: 42px;
+
+            @include breakpoint("max-md") {
+                display: none;
+            }
 
             a {
+                color: var(--primary_font_color);
+                @include flex_center();
+
+                &:visited {
+                    color: var(--primary_font_color);
+                }
+
                 p {
                     @include menu();
                     position: relative;
                     z-index: 1;
-                    &:hover{
-                        .product_drop_down{
+                    @include flex_center();
+
+                    svg {
+                        padding-left: 2px;
+                    }
+
+                    &:hover {
+                        .product_drop_down {
                             display: block;
                         }
                     }
-
 
                     .product_drop_down {
                         overflow: hidden;
@@ -45,33 +76,71 @@ header {
                         }
                     }
                 }
+            }
+        }
 
-                padding-left: 42px;
-                @include flex_center();
+        .header_menu_mobile {
+            display: none;
 
-                &:nth-child(3),
-                &:nth-child(4),
-                &:nth-child(5) {
-                    &::after {
-                        content: "";
-                        display: inline-block;
-                        margin-left: 10px;
-                        vertical-align: 0.255em;
-                        border-top: 0.3em solid;
-                        border-right: 0.3em solid transparent;
-                        border-bottom: 0;
-                        border-left: 0.3em solid transparent;
+            @include breakpoint("max-md") {
+                display: block
+            }
+
+            .menu_icon {
+                position: relative;
+                z-index: 1;
+
+                &.open {
+                    .mobile_menu_item {
+                        display: block;
                     }
                 }
 
+                .mobile_menu_item {
+                    margin-top: 21px;
+                    position: absolute;
+                    width: 720px;
+                    display: none;
+                    background-color: var(--white);
+
+                    p {
+                        padding: 10px 15px;
+                        @include flex_center();
+                        position: relative;
+
+                        svg {
+                            padding-left: 2px;
+                        }
+                    }
+
+                    .product_dropDown {
+                        background-color: var(--primary_color);
+                        border-radius: 4px;
+
+                        a {
+                            color: var(--white);
+
+                            p {
+                                color: var(--white)
+                            }
+                        }
+                    }
+                }
             }
         }
 
         .header_icons {
             @include flex_center();
             gap: 40px;
-        }
 
+            @include breakpoint("max-xs") {
+                gap: 12px;
+            }
+
+            @include breakpoint ("max-md") {
+                order: 3;
+            }
+        }
 
         .search_bar {
             background-color: var(--primary_color);
@@ -80,6 +149,7 @@ header {
             width: 100%;
             visibility: hidden;
             position: absolute;
+            z-index: 1;
             bottom: -56px;
             left: 0;
 

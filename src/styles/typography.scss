@@ -16,3 +16,41 @@
     font-weight: 400;
     color: var(--white);
 }
+
+@mixin heading {
+    font-size: 68px;
+    font-weight: 500;
+    line-height: 78px;
+    color: var(--primary_font_color);
+    font-family: "Poppins", sans-serif;
+    @include breakpoint("max-lg"){
+        font-size: 52px;
+        line-height: 62px;
+    }
+    @include breakpoint("max-md"){
+        font-size: 48px;
+        line-height: 1;
+    }
+}
+@mixin heading2 {
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--primary_font_color);
+    font-family: "Poppins", sans-serif;
+    @include breakpoint("max-lg"){
+        font-size: 36px;
+        line-height: 62px;
+    }
+    @include breakpoint("max-md"){
+        font-size: 30px;
+        line-height: 1;
+    }
+}
+
+@mixin subHeading {
+    color: var(--secondary-font-color);
+    font-size: 20px;
+    line-height: 1.5;
+    font-weight: 500;
+}

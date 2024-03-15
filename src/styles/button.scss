@@ -1,0 +1,38 @@
+.btn {
+    padding: 17px 50px;
+    font-family: "Rubik", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 50px;
+    cursor: pointer;
+
+    &.fill {
+        background-color: var(--primary_color);
+        border: 1px solid transparent;
+        border-radius: 4px;
+        color: var(--white);
+        transition: .3s ease-in-out;
+
+        &:hover {
+            background-color: var(--white);
+            border: 1px solid var(--primary_color);
+            color: var(--primary_color);
+            transition: .3s ease-in-out;
+        }
+    }
+
+    &.transparent {
+        background-color: var(--white);
+        border: 1px solid var(--primary_color);
+        color: var(--primary_color);
+        transition: .3s ease-in-out;
+        border-radius: 4px;
+
+        &:hover {
+            background-color: var(--primary_color);
+            border: 1px solid transparent;
+            color: var(--white);
+            transition: .3s ease-in-out;
+        }
+    }
+}

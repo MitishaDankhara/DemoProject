@@ -1,0 +1,43 @@
+@import '../../../styles/global.scss';
+
+.trending_item_bg {
+    background-color: #F4EDF2;
+    padding: 200px 0px;
+
+    .trending_item_heading {
+        text-align: center;
+
+        h2 {
+            @include heading2();
+            padding: 30px 0px;
+        }
+    }
+
+    .item_grid_card {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+
+        .item_card_item {
+            img {
+                width: 100%;
+                object-fit: cover;
+            }
+
+            h2 {
+                max-width: 317px;
+                color: var(--primary_font_color);
+                font-size: 24px;
+                font-weight: 400;
+                line-height: 1.5;
+            }
+
+            p {
+                line-height: 2;
+                font-size: 15px;
+                color: var(--secondary-font-color);
+                font-weight: 500;
+            }
+        }
+    }
+}

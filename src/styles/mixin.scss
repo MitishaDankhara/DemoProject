@@ -12,3 +12,7 @@
     align-items: center;
     justify-content: space-between;
 }
+
+@mixin transition{
+    transition: .3s ease-in-out;
+}

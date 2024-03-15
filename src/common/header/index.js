@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import useOnClickOutside from "../../CustomHook/hook";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
   const [isOpenddProduct, setIsOpenddProduct] = useState(false);
   const [isOpenddPages, setIsOpenddPages] = useState(false);
   const [isOpenddBlog, setIsOpenddBlog] = useState(false);
@@ -12,69 +13,131 @@ export default function Header() {
   useOnClickOutside(DropDownRef, () => setIsOpenddProduct(false));
   useOnClickOutside(DropDownRef, () => setIsOpenddPages(false));
   useOnClickOutside(DropDownRef, () => setIsOpenddBlog(false));
-  const handleOpen = () => {
-    setIsOpen(true);
+  useOnClickOutside(DropDownRef, () => setIsOpenMenu(false));
+
+  const [showProductDropdown, setShowProductDropdown] = useState(false);
+  const toggleProductDropdown = () => {
+    setShowProductDropdown(!showProductDropdown);
   };
-  const handleClose = () => {
-    setIsOpen(false);
+  const [showPageDropdown, setShowPageDropdown] = useState(false);
+  const togglePageDropdown = () => {
+    setShowPageDropdown(!showPageDropdown);
   };
-  const handleOpendd = () => {
-    setIsOpenddProduct(true);
-  };
-  const handleOpenddPage = () => {
-    setIsOpenddPages(true);
-  };
-  const handleOpenddBlog = () => {
-    setIsOpenddBlog(true);
+  const [showBlogDropdown, setShowBlogDropdown] = useState(false);
+  const toggleBlogDropdown = () => {
+    setShowBlogDropdown(!showBlogDropdown);
   };
   return (
-    <div>
+    <>
       <header>
         <div className="container">
           <div className="header_alignment">
             <div className="header_logo">
-              <img src={Logo} alt="Pillow Mart" />
+              <Link to={"/"}>
+                <img src={Logo} alt="Pillow Mart" />
+              </Link>
             </div>
             <div className="header_menu">
-              <Link to={"/home"}>
+              <Link to={"/"}>
                 <p>Home</p>
               </Link>
               <Link to={"/about"}>
                 <p>About</p>
               </Link>
               <Link to={""}>
-                <p onClick={handleOpendd}>
+                <p onClick={() => setIsOpenddProduct(true)}>
                   Product
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    height="20"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path d="m7 10 5 5 5-5z"></path>
+                  </svg>
                   <div
-                    className={`product_drop_down ${isOpenddProduct ? "open" : ""}`}
+                    className={`product_drop_down ${
+                      isOpenddProduct ? "open" : ""
+                    }`}
                     ref={DropDownRef}
                   >
-                    <p>Product List</p>
-                    <p>Product Details</p>
+                    <Link to={"/productList"}>
+                      <p>Product List</p>
+                    </Link>
+                    <Link to={"/productDetails"}>
+                      <p>Product Details</p>
+                    </Link>
                   </div>
                 </p>
               </Link>
               <Link to={""}>
-                <p onClick={handleOpenddPage}>Pages
-                <div
-                    className={`product_drop_down ${isOpenddPages ? "open" : ""}`}
+                <p onClick={() => setIsOpenddPages(true)}>
+                  Pages
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    height="20"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path d="m7 10 5 5 5-5z"></path>
+                  </svg>
+                  <div
+                    className={`product_drop_down ${
+                      isOpenddPages ? "open" : ""
+                    }`}
                     ref={DropDownRef}
                   >
-                    <p>Login</p>
-                    <p>Product Checkout</p>
-                    <p>Shopping Cart</p>
+                    <Link to={"/login"}>
+                      <p>Login</p>
+                    </Link>
+                    <Link to={"/productCheckout"}>
+                      <p>Product Checkout</p>
+                    </Link>
+                    <Link to={"/shoppingCart"}>
+                      <p>Shopping Cart</p>
+                    </Link>
                     <p>Confirmation</p>
-                    <p>Elements</p>
-                  </div></p>
+                    <Link to={"/element"}>
+                      <p>Elements</p>
+                    </Link>
+                  </div>
+                </p>
               </Link>
               <Link to={""}>
-                <p onClick={handleOpenddBlog}>Blog
-                <div
-                    className={`product_drop_down ${isOpenddBlog ? "open" : ""}`}
+                <p onClick={() => setIsOpenddBlog(true)}>
+                  Blog
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 24 24"
+                    height="20"
+                    width="20"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path fill="none" d="M0 0h24v24H0z"></path>
+                    <path d="m7 10 5 5 5-5z"></path>
+                  </svg>
+                  <div
+                    className={`product_drop_down ${
+                      isOpenddBlog ? "open" : ""
+                    }`}
                     ref={DropDownRef}
                   >
-                    <p>Blog</p>
-                    <p>Single Blog</p>
+                    <Link to={"/blog"}>
+                      <p>Blog</p>
+                    </Link>
+                    <Link to={"/singleBlog"}>
+                      <p>Single Blog</p>
+                    </Link>
                   </div>
                 </p>
               </Link>
@@ -82,8 +145,126 @@ export default function Header() {
                 <p>Contact</p>
               </Link>
             </div>
+            <div
+              className="header_menu_mobile"
+              onClick={() => setIsOpenMenu(true)}
+            >
+              <div
+                className={`menu_icon ${isOpenMenu ? "open" : ""}`}
+                ref={DropDownRef}
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 512 512"
+                  height="20"
+                  width="20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M32 96v64h448V96H32zm0 128v64h448v-64H32zm0 128v64h448v-64H32z"></path>
+                </svg>
+                <div className="mobile_menu_item">
+                  <Link to={"/home"}>
+                    <p>Home</p>
+                  </Link>
+                  <Link to={"/about"}>
+                    <p>About</p>
+                  </Link>
+                  <p onClick={toggleProductDropdown}>
+                    Product
+                    <svg
+                      stroke="currentColor"
+                      fill="currentColor"
+                      strokeWidth="0"
+                      viewBox="0 0 24 24"
+                      height="20"
+                      width="20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path fill="none" d="M0 0h24v24H0z" />
+                      <path d="m7 10 5 5 5-5z" />
+                    </svg>
+                  </p>
+                  {showProductDropdown && (
+                    <div className="product_dropDown">
+                      <Link to={"/productList"}>
+                        <p>Product List</p>
+                      </Link>
+                      <Link to={"/productDetails"}>
+                        <p>Product Details</p>
+                      </Link>
+                    </div>
+                  )}
+                  <Link to={""}>
+                    <p onClick={togglePageDropdown}>
+                      Pages
+                      <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        height="20"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path d="m7 10 5 5 5-5z"></path>
+                      </svg>
+                    </p>
+                    {showPageDropdown && (
+                      <div className="product_dropDown">
+                        <Link to={"/login"}>
+                          <p>Login</p>
+                        </Link>
+                        <Link to={"/productCheckout"}>
+                          <p>Product Checkout</p>
+                        </Link>
+                        <Link to={"/shoppingCart"}>
+                          <p>Shopping Cart</p>
+                        </Link>
+                        <p>Confirmation</p>
+                        <Link to={"/element"}>
+                          <p>Elements</p>
+                        </Link>
+                      </div>
+                    )}
+                  </Link>
+                  <Link to={""}>
+                    <p onClick={toggleBlogDropdown}>
+                      Blog
+                      <svg
+                        stroke="currentColor"
+                        fill="currentColor"
+                        stroke-width="0"
+                        viewBox="0 0 24 24"
+                        height="20"
+                        width="20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path fill="none" d="M0 0h24v24H0z"></path>
+                        <path d="m7 10 5 5 5-5z"></path>
+                      </svg>
+                    </p>
+                    {showBlogDropdown && (
+                      <div className="product_dropDown">
+                        <Link to={"/blog"}>
+                          <p>Blog</p>
+                        </Link>
+                        <Link to={"/singleBlog"}>
+                          <p>Single Blog</p>
+                        </Link>
+                      </div>
+                    )}
+                  </Link>
+                  <Link to={"/contact"}>
+                    <p>Contact</p>
+                  </Link>
+                </div>
+              </div>
+            </div>
             <div className="header_icons">
-              <div className="search" onClick={handleOpen}>
+              <div className="search" onClick={() => setIsOpen(true)}>
                 <svg
                   stroke="currentColor"
                   fill="currentColor"
@@ -113,7 +294,7 @@ export default function Header() {
               </div>
               <div className={`search_bar ${isOpen ? "open" : ""}`}>
                 <input type="text" placeholder="Search Here" />
-                <div className="close_icon" onClick={handleClose}>
+                <div className="close_icon" onClick={() => setIsOpen(false)}>
                   <svg
                     stroke="currentColor"
                     fill="none"
@@ -136,6 +317,6 @@ export default function Header() {
           </div>
         </div>
       </header>
-    </div>
+    </>
   );
 }

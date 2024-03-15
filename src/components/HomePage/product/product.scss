@@ -1,0 +1,72 @@
+@import '../../../styles/global.scss';
+
+.products_grid_main {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    align-items: center;
+    padding-bottom: 100px;
+
+    @include breakpoint('max-lg') {
+        padding-bottom: 80px;
+    }
+
+    @include breakpoint('max-md') {
+        padding-bottom: 60px;
+    }
+
+    @include breakpoint('max-sm') {
+        padding-bottom: 40px;
+    }
+
+    @include breakpoint('max-xs') {
+        padding-bottom: 28px;
+    }
+
+    @include breakpoint("max-lg") {
+        padding: 0px 40px;
+    }
+
+    &:nth-child(2) {
+        .product_image {
+            .image_bg {
+                img {
+                    right: 43px;
+                    left: inherit;
+                }
+            }
+        }
+    }
+
+    .product_image {
+        width: 520px;
+        height: 436px;
+
+        .image_bg {
+            background-color: var(--primary_color);
+            height: 100%;
+            width: 100%;
+            position: relative;
+
+            img {
+                display: block;
+                position: absolute;
+                top: 43px;
+                left: 43px;
+            }
+        }
+    }
+
+    .product_Desc {
+        max-width: 447px;
+
+        p {
+            @include subHeading();
+            color: var(--primary_color)
+        }
+
+        h2 {
+            @include heading2();
+        }
+    }
+}
